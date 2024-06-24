@@ -2,32 +2,24 @@ package com.project.backend.entities;
 
 import jakarta.persistence.*;
 
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
 public class Project {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Long id;
     private String name;
 
-    @ManyToMany(mappedBy = "projects")
-    private Set<User> users;
+    @OneToMany(mappedBy = "project", cascade = CascadeType.ALL, orphanRemoval = true)
+    private Set<Task> tasks = new HashSet<>();
 
-    public Project() {
-    }
-
-    public Project(long id, String name, Set<User> users) {
-        this.id = id;
-        this.name = name;
-        this.users = users;
-    }
-
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -39,11 +31,11 @@ public class Project {
         this.name = name;
     }
 
-    public Set<User> getUsers() {
-        return users;
+    public Set<Task> getTasks() {
+        return tasks;
     }
 
-    public void setUsers(Set<User> users) {
-        this.users = users;
+    public void setTasks(Set<Task> tasks) {
+        this.tasks = tasks;
     }
 }

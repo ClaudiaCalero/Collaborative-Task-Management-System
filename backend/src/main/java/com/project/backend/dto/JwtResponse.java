@@ -16,6 +16,9 @@ public class JwtResponse {
         this.roles = roles;
     }
 
+    public JwtResponse(String jwt, Object id, Object username, Object email, List<String> roles) {
+    }
+
     public String getToken() {
         return token;
     }

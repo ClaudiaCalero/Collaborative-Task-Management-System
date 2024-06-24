@@ -10,11 +10,10 @@ public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
-
+    private Long id;
     private String username;
+    private String email;
     private String password;
-    private boolean enabled;
 
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(name = "user_roles",
@@ -25,19 +24,17 @@ public class User {
     public User() {
     }
 
-    public User(long id, String username, String password, boolean enabled, Set<Role> roles) {
-        this.id = id;
+    public User(String username, String email, String password) {
         this.username = username;
+        this.email = email;
         this.password = password;
-        this.enabled = enabled;
-        this.roles = roles;
     }
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -49,20 +46,20 @@ public class User {
         this.username = username;
     }
 
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
     public String getPassword() {
         return password;
     }
 
     public void setPassword(String password) {
         this.password = password;
-    }
-
-    public boolean isEnabled() {
-        return enabled;
-    }
-
-    public void setEnabled(boolean enabled) {
-        this.enabled = enabled;
     }
 
     public Set<Role> getRoles() {

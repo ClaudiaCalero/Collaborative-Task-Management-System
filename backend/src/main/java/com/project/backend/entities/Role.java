@@ -1,38 +1,30 @@
 package com.project.backend.entities;
 
 import jakarta.persistence.*;
-import org.hibernate.event.spi.FlushEntityEvent;
-
-import java.util.HashSet;
-import java.util.Set;
 
 @Entity
 public class Role {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Integer id;
 
     @Enumerated(EnumType.STRING)
     @Column(length = 20)
     private ERole name;
 
-    @ManyToMany(mappedBy = "roles")
-    private Set<User> users = new HashSet<>();
-
     public Role() {
+
     }
 
     public Role(ERole name) {
         this.name = name;
     }
 
-    // Getters and setters
-    public Long getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -43,13 +35,5 @@ public class Role {
     public void setName(ERole name) {
         this.name = name;
     }
-
-    public Set<User> getUsers() {
-        return users;
-    }
-
-    public void setUsers(Set<User> users) {
-        this.users = users;
-    }
 }
-}
+
