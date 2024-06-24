@@ -2,7 +2,7 @@ package com.project.backend.dto;
 
 import java.util.Date;
 
-public class TaskDto {
+public class TaskDTO {
     private String title;
     private String description;
     private Date dueDate;
